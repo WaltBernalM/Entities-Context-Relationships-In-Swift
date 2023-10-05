@@ -14,12 +14,14 @@
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="size" optional="YES" attributeType="String"/>
         <relationship name="fromCustomer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Customer" inverseName="toDessert" inverseEntity="Customer"/>
+        <relationship name="fromLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="toDessert" inverseEntity="Location"/>
     </entity>
     <entity name="Dish" representedClassName="Dish" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="size" optional="YES" attributeType="String"/>
         <relationship name="fromCustomer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Customer" inverseName="toDish" inverseEntity="Customer"/>
+        <relationship name="fromLocation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="toDish" inverseEntity="Location"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -29,5 +31,7 @@
         <attribute name="neighborhood" optional="YES" attributeType="String"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <relationship name="toCustomer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="fromLocation" inverseEntity="Customer"/>
+        <relationship name="toDessert" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dessert" inverseName="fromLocation" inverseEntity="Dessert"/>
+        <relationship name="toDish" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dish" inverseName="fromLocation" inverseEntity="Dish"/>
     </entity>
 </model>
